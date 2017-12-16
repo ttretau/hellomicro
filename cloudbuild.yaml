@@ -1,0 +1,8 @@
+steps:
+  - name: "gcr.io/cloud-builders/mvn"
+    args: ["install", "github.com/ttretau/hellomicro"]
+    env: ["PROJECT_ROOT=github.com/ttretau/hellomicro"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/gcproject-186921/hellomicro:$REVISION_ID", "-f", "Dockerfile", "."]
+images:
+  - "gcr.io/gcproject-186921/hellomico:$REVISION_ID"
