@@ -9,7 +9,7 @@
   <packaging>war</packaging>
 
   <properties>
-    <version.wildfly.swarm>2017.12.1</version.wildfly.swarm>
+    <thorntail.version>2.3.0.Final</thorntail.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -19,9 +19,9 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.wildfly.swarm</groupId>
+        <groupId>io.thorntail</groupId>
         <artifactId>bom-all</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>${thorntail.version}</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
@@ -29,13 +29,12 @@
   </dependencyManagement>
 
   <build>
-    <finalName>demo</finalName>
+    <finalName>app</finalName>
     <plugins>
       <plugin>
-        <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-plugin</artifactId>
-        <version>${version.wildfly.swarm}</version>
-        
+        <groupId>io.thorntail</groupId>
+        <artifactId>thorntail-maven-plugin</artifactId>
+        <version>${thorntail.version}</version>
         <executions>
           <execution>
             <goals>
@@ -48,20 +47,13 @@
   </build>
 
   <dependencies>
-    <!-- Java EE 7 dependency -->
     <dependency>
-      <groupId>javax</groupId>
-      <artifactId>javaee-api</artifactId>
-      <version>7.0</version>
-      <scope>provided</scope>
-    </dependency>
-    <!-- WildFly Swarm Fractions -->
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
+      <groupId>io.thorntail</groupId>
       <artifactId>jaxrs</artifactId>
-    </dependency><dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>cdi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.thorntail</groupId>
+      <artifactId>microprofile-health</artifactId>
     </dependency>
   </dependencies>
 </project>
